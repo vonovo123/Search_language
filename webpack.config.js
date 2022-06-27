@@ -8,7 +8,7 @@ module.exports = {
     extensions: [".js"],
   },
   entry: {
-    app: path.join(__dirname, "index.js"),
+    app: path.join(__dirname, "src/main.js"),
   },
   module: {
     rules: [
