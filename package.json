@@ -1,0 +1,38 @@
+{
+  "name": "catphotobook",
+  "version": "1.0.0",
+  "description": "Vanilla JS로 구현한 고양이사진첩 사이트입니다(2020 프로그래머스 데브매칭 프론트엔드 과제)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --watch",
+    "dev": "webpack-dev-server --hot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vonovo123/CatPhotoBook.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vonovo123/CatPhotoBook/issues"
+  },
+  "homepage": "https://github.com/vonovo123/CatPhotoBook#readme",
+  "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "^7.14.5",
+    "@babel/preset-env": "^7.15.8",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "css-loader": "^5.2.6",
+    "style-loader": "^2.0.0",
+    "eslint": "^7.32.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.24.2",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "2.4.0",
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.0",
+    "webpack-dev-server": "^3.11.0"
+  }
+}

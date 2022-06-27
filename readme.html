@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>readme.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h3 id="%ED%95%84%EC%88%98%EC%A7%88%EB%AC%B8">필수질문</h3>
+<h2 id="%EC%A3%BC%EC%96%B4%EC%A7%84-%EA%B3%BC%EC%A0%9C%EC%97%90%EC%84%9C-%EC%96%B4%EB%96%A0%ED%95%9C-%EB%8A%A5%EB%A0%A5%EC%9D%84-%ED%8F%89%EA%B0%80%ED%95%98%EA%B3%A0%EC%9E%90-%ED%95%98%EB%8A%94%EC%A7%80%EC%97%90-%EB%8C%80%ED%95%B4"><strong>주어진 과제에서 어떠한 능력을 평가하고자 하는지에 대해</strong></h2>
+<br>
+<h3 id="js%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-dom-api-%EC%A1%B0%EC%9E%91"><em>JS를 활용한 DOM API 조작</em></h3>
+<hr>
+</br>
+<h4 id="%EA%B5%AC%ED%98%84-%EA%B8%B0%EC%88%A0"><strong>구현 기술</strong></h4>
+<p>DOM API를 이용해 HTML에 대한 요소노드를 취득/생성한다.</p>
+<ul>
+<li>DOM API를 이용해 주어진 과제의 HTML에 대한 요소노드를 취득/생성한다.</li>
+<li>취득/생성한 요소노드를 기반으로 컴포넌트를 생성하고 에플리케이션을 컴포넌트 단위로 구성한다.</li>
+</ul>
+<p>DOM API를 이용해 HTML에 대한 요소노드의 정보를 취득하고 조작한다.</p>
+<ul>
+<li>DOM API를 이용해 주어진 과제의 요건에 맞게 요소노드의 정보를 취득하고 조작한다.</li>
+</ul>
+<p>DOM API를 이용해 HTML에 대한 요소노드의 스타일을 변경한다.</p>
+<ul>
+<li>DOM API를 이용해 주어진 과제의 요건에 맞게 요소노드의 스타일을 조작한다.</li>
+</ul>
+</br>
+<h4 id="%EB%B6%84%EB%B3%84%EC%9A%94%EC%86%8C"><strong>분별요소</strong></h4>
+<p>과제에 주어진 HTML 요소를 바탕으로 기능에 따라 독립적인 컴포넌트로 생성할 수 있는가?</p>
+<p>컴포넌트 생성에 필요한 공통적인 로직을 공통 컴포넌트로 분리하고 상속을 통해 컴포넌트를 생성할 수 있는가?</p>
+<p>생성된 컴포넌트는 컴포넌트간 강하게 결합하지않고 재사용이 가능한가?</p>
+<br>
+<h4 id="%EC%A4%91%EC%9A%94%EB%8F%84"><strong>중요도</strong></h4>
+<p>DOM API를 통해 HTML 요소를 자유롭게 제어할 수 있습니다.<br>
+또한 요소노드를 기반으로 컴포넌트를 생성하고 컴포넌트의 상태(state)에 따라 요소노드 내부에 엘리먼트를 렌더링할 수 있습니다.<br>
+이러한 DOM 요소노드 취득을 통한 컴포넌트 생성은 SPA와 MSA의 기본개념으로 중요도가 높습니다.</p>
+</br>
+<h3 id="%EC%9D%B4%EB%B2%A4%ED%8A%B8-%EB%93%9C%EB%A6%AC%EB%B8%90-%ED%94%84%EB%A1%9C%EA%B7%B8%EB%9E%98%EB%B0%8D"><strong><em>이벤트 드리븐 프로그래밍</em></strong></h3>
+<hr>
+</br>
+<h4 id="%EA%B5%AC%ED%98%84-%EA%B8%B0%EC%88%A0"><strong>구현 기술</strong></h4>
+<p>이벤트 핸들러를 생성하고 이를 브라우저에 등록한다.</p>
+<ul>
+<li>주어진 과제의 요건에 맞는 이벤트 핸들러를 생성하고 발생하는 이벤트의 타입에 맞게 동작하도록 브라우저에 이벤트 핸들러를 등록한다.</li>
+</ul>
+<p>DOM요소의 기본 동작을 제어한다.</p>
+<ul>
+<li>DOM API로 생성한 요소노드의 기본동작을 제어하고 주어진 과제의 요건에 맞게 동작할 수 있도록 개발한다.</li>
+</ul>
+</br>
+<h4 id="%EB%B6%84%EB%B3%84%EC%9A%94%EC%86%8C"><strong>분별요소</strong></h4>
+<p>요소노드에 등록된 이벤트가 상위 요소노드에서의 이벤트 전파로 인해 비정상적으로 실행되지 않는가?</p>
+</br>
+<h4 id="%EC%A4%91%EC%9A%94%EB%8F%84"><strong>중요도</strong></h4>
+<p>이벤트 드리븐 프로그래밍은 사용자와 애플리케이션간의 상호작용을 가능하게 합니다.<br>
+사용자 행동에 맞는 적절한 이벤트 핸들러를 등록하는 것은 에플리케이션 기능 구현에 기본이 되는 요소이기때문에 중요도가 높습니다.</p>
+</br>
+<h3 id="api-%ED%98%B8%EC%B6%9C%EA%B3%BC-%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%B2%98%EB%A6%AC"><strong><em>API 호출과 자바스크립트 비동기 처리</em></strong></h3>
+<hr>
+</br>
+<h4 id="%EA%B5%AC%ED%98%84-%EA%B8%B0%EC%88%A0"><strong>구현 기술</strong></h4>
+<p>fetch API를 활용해 외부 API로 부터 데이터를 받아온다.</p>
+<ul>
+<li>주어진 과제에서 제공한 외부 API url에 입력 컴포넌트로 부터 받은 쿼리를 담아 요청하고 응답받은 데이터를 컴포넌트에 제공한다.</li>
+</ul>
+<p>sync/await 키워드를 활용해 fetch API로 부터 데이터를 받아 컴포넌트에 전달하는 과정을 비동기 처리한다.</p>
+<ul>
+<li>비동기 처리를 통해 컴포넌트가 데이터를 전달받아 컴포넌트의 상태(state)에 저장하고 캐싱하는 로직의 데이터와 순서를 보장한다.</li>
+</ul>
+</br>
+<h4 id="%EB%B6%84%EB%B3%84-%EC%9A%94%EC%86%8C"><strong>분별 요소</strong></h4>
+<p>fetch API의 비정상적인 응답에 대한 예외처리가 되어있는가?</p>
+</br>
+<h4 id="%EC%A4%91%EC%9A%94%EB%8F%84"><strong>중요도</strong></h4>
+<p>JS 비동기 처리는 서버나 API에서 조회해온 데이터를 활용하는 로직에서 데이터를 보장합니다.<br>
+비동기 처리를 통해 코드가 정확하게 동작하도록 하는 것은 코드의 안정성을 높이는 중요한 요소입니다.</p>
+</br>
+<h3 id="js-%EB%B0%B0%EC%97%B4-%EB%B0%8F-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0-%ED%99%9C%EC%9A%A9"><strong><em>JS 배열 및 자료구조 활용</em></strong></h3>
+<hr>
+<br>
+<h4 id="%EA%B5%AC%ED%98%84-%EA%B8%B0%EC%88%A0"><strong>구현 기술</strong></h4>
+<p>JS가 제공하는 배열과 배열의 prototype 메서드를 이용해 배열을 생성/수정한다.</p>
+<ul>
+<li>주어진 과제의 요건에 맞게 배열을 생성한다.</li>
+<li>사용자의 동작에 따라 생성한 배열에 데이터를 추가하거나 배열내의 특정 요소를 제거한다.</li>
+<li>배열 내의 데이터의 수를 제어하고 데이터가 중복되지 않도록 한다.
+</br></li>
+</ul>
+<h4 id="%EB%B6%84%EB%B3%84-%EC%9A%94%EC%86%8C"><strong>분별 요소</strong></h4>
+<p>요건에 맞게 배열을 정제하는 과정에서 불필요한 탐색이 이루어지지 않는가?
+</br></p>
+<h4 id="%EC%A4%91%EC%9A%94%EB%8F%84"><strong>중요도</strong></h4>
+<p>JS엔진에는 Array, Object, Map, Set 이외에 자료구조 Object를 제공하지 않습니다.<br>
+이에 배열을 활용해 요건에 맞는 자료구조를 구현할 수 있는 능력은 JS를 이용한 개발에 중요한 요소입니다.</p>
+</br>
+<h3 id="%EC%A0%95%EA%B7%9C%ED%91%9C%ED%98%84%EC%8B%9D%EA%B3%BC-js-regexp-object%EC%9D%98-%ED%99%9C%EC%9A%A9"><strong><em>정규표현식과 JS RegExp Object의 활용</em></strong></h3>
+<hr>
+</br>
+<h4 id="%EA%B5%AC%ED%98%84-%EA%B8%B0%EC%88%A0"><strong>구현 기술</strong></h4>
+<p>정규표현식을 이용해 문자열내부의 패턴을 탐색하고 이를 에플리케이션의 유효성검사에 활용한다.</p>
+<ul>
+<li>
+<p>사용자의 입력 문자열과 입력 문자열을 통해 API에서 조회해온 데이터의 일치 패턴을 검색하고 일치하는 값을 요건에 맞게 치환한다.</p>
+</li>
+<li>
+<p>사용자가 입력한 문자열 중 API의 조회의 쿼리스트링으로 사용할 수 없는 특수문자 포함여부를 정규표현식을 활용해 검사하고 예외처리한다.</p>
+</li>
+</ul>
+</br>
+<h4 id="%EB%B6%84%EB%B3%84-%EC%9A%94%EC%86%8C"><strong>분별 요소</strong></h4>
+<p>사용자 입력 값이 유발할 수 있는 오류를 정규표현식을 활용한 유효성 검사를 통해 사전에 방지할 수 있는가?</p>
+<h4 id="%EC%A4%91%EC%9A%94%EB%8F%84"><strong>중요도</strong></h4>
+<p>사용자 입력은 예상치 못한 에러를 유발할 위험성을 항상 가지고있기 때문에 입력값에 대한 유효성 검사는 매우 중요한 요소입니다.</p>
+<p>이에 코드의 안정성 부분에서 많은 입력 케이스에 대한 유효성 검사를 위한 정규표현식 활용능력은 중요합니다.</p>
+</br>
+<h3 id="js-%ED%95%A8%EC%88%98%EC%9D%98-%ED%98%B8%EC%B6%9C-%EC%8A%A4%EC%BC%80%EC%A5%B4%EB%A7%81"><strong><em>JS 함수의 호출 스케쥴링</em></strong></h3>
+<hr>
+</br>
+<h4 id="%EA%B5%AC%ED%98%84-%EA%B8%B0%EC%88%A0"><strong>구현 기술</strong></h4>
+<p>JS 타이머 함수를 활용해 함수의 실행을 지연하거나 호출 시점을 예약할 수 있다.</p>
+<ul>
+<li>
+<p>사용자의 입력에 의해 호출되는 이벤트 핸들러의 과도한 호출을 방지하기 위해 사용자 입력이 종료돼었다고 판단되는 시점에 이벤트 핸들러를 호출하도록 구현한다.</p>
+</li>
+<li>
+<p>이를 위해 JS 타이머 함수를 활용해 사용자의 마지막 입력 후 지연시간이 지나면 핸들러를 호출한다.</p>
+</li>
+<li>
+<p>지연시간동안 발생한 입력은 이벤트를 호출하지 않고 지연시간만 초기화한다.</p>
+</li>
+</ul>
+</br>
+<h4 id="%EB%B6%84%EB%B3%84-%EC%9A%94%EC%86%8C"><strong>분별 요소</strong></h4>
+<p>디바운스의 개념을 알고 이를 코드로 구현할 수 있는가?</p>
+</br>
+<h4 id="%EC%A4%91%EC%9A%94%EB%8F%84"><strong>중요도</strong></h4>
+<p>사용자 입력으로 인해 발생하는 이벤트 핸들러의 과도한 호출은 애플리케이션의 전체적인 성능저하를 야기할 수 있습니다.<br>
+코드의 성능 관점에서 함수 호출 스케쥴링 능력은 중요한 요소입니다.</p>
+</br>
+<h3 id="js%EB%A5%BC-%ED%86%B5%ED%95%9C-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80-%EC%8A%A4%ED%86%A0%EB%A6%AC%EC%A7%80-%ED%99%9C%EC%9A%A9"><strong><em>JS를 통한 브라우저 스토리지 활용</em></strong></h3>
+<hr>
+</br>
+<h4 id="%EA%B5%AC%ED%98%84-%EA%B8%B0%EC%88%A0"><strong>구현 기술</strong></h4>
+<p>브라우저에서 제공하는 스토리지(Local Storage, Sesion Storage)를 활용해 데이터를 캐싱하고 페이지 새로고침이나 브라우저 종류시에도 현재 상태를 유지할 수 있다.</p>
+<ul>
+<li>
+<p>Local Storage에 애플리케이션 메인 컴포넌트의 최신 상태를 저장한다.</p>
+</li>
+<li>
+<p>애플리케이션이 새로 로드 될때 Local Storage에 데이터가 존재하면 이를 활용해 최신 상태를 구현한다.</p>
+</li>
+<li>
+<p>Session Storage에 사용자 입력에 따른 API 응답값을 저장해 캐시데이터로 활용한다.</p>
+</li>
+<li>
+<p>Session Storage에 이미 키값으로 저장된 입력값은 API를 별도로 호출하지않고 케시데이터의 해당 키값에 대한 value를 응답값으로 활용한다.</p>
+</li>
+</ul>
+</br>
+<h4 id="%EB%B6%84%EB%B3%84-%EC%9A%94%EC%86%8C"><strong>분별 요소</strong></h4>
+<p>Session Storage의 특징을 활용해 브라우저 종료시 API 응답에 대한 캐시데이터를 초기화 할 수 있는가?</p>
+</br>
+<h4 id="%EC%A4%91%EC%9A%94%EB%8F%84"><strong>중요도</strong></h4>
+<p>API 호출에 대한 요청값과 응답값 캐싱을 통해 불필요한 API 호출을 최소화 할 수 있습니다.<br>
+또한 컴포넌트 렌더링에 필요한 최신 상태를 캐싱하여 브라우저 종료나 새로고침에 관계없이 애플리케이션의 최신상태를 유지할 수 있습니다.<br>
+사용자의 편의성과 애플리케이션 성능 향상의 관점에서 스토리지를 활용한 캐싱기술은 중요한 요소입니다.</p>
+</br>
+</br>
+</br>
+<h2 id="%EC%84%A0%ED%83%9D%EC%A7%88%EB%AC%B8">선택질문</h2>
+<h3 id="%EA%B3%BC%EC%A0%9C%EC%97%90%EC%84%9C-%EC%B6%94%EA%B0%80%EB%A1%9C-%EC%B6%9C%EC%A0%9C%ED%95%B4%EB%B3%BC-%EC%88%98-%EC%9E%88%EB%8A%94-%EC%9A%94%EC%86%8C%EB%8A%94"><strong>과제에서 추가로 출제해볼 수 있는 요소는</strong>?</h3>
+</br>
+<h4 id="%EC%BC%80%EB%9F%AC%EC%85%80-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0"><strong><em>케러셀 구현하기</em></strong></h4>
+<hr>
+<ul>
+<li>
+<p>선택한 언어 리스트(SelectedLanges) 케러셀 형태로 구현</p>
+</li>
+<li>
+<p>선택한 언어의 수가 제한을 넘어가는 경우 기존 요소를 리스트에서 삭제하는 것이 아닌 버튼을 통해 좌우로 이동하며 리스트의 전체요소를 확인 할 수 있도록 요구조건 변경</p>
+</li>
+<li>
+<p>케러셀 구현은 간단한 UI 제공만으로 컴포넌트의 상태변화에 따른 렌더링 로직 구현능력, DOM API 조작능력, JS 이벤트 활용능력에 대해 평가 할 수 있음.</p>
+</li>
+</ul>
+</br>
+<h4 id="%EA%B2%80%EC%83%89%ED%95%9C-%EC%96%B8%EC%96%B4%EB%A6%AC%EC%8A%A4%ED%8A%B8suggestion-%EB%A1%9C%EB%94%A9%EC%B2%98%EB%A6%AC"><strong><em>검색한 언어리스트(Suggestion) 로딩처리</em></strong></h4>
+<hr>
+<ul>
+<li>
+<p>검색 API 응답지연시 검색한 언어리스트(Suggestion) 내부에 스피너 랜딩</p>
+</li>
+<li>
+<p>입력에 대한 API 응답이 지연되면 이를 명시적으로 표현하는 스피너가
+표시되도록 하는 요구조건 추가</p>
+</li>
+<li>
+<p>이를 통해 JS 비동기 처리 활용능력을 평가 할 수 있음.</p>
+</li>
+</ul>
+</br>
+<h4 id="%EC%9B%B9-%EB%B0%98%EC%9D%91%ED%98%95-%EC%9A%94%EC%86%8C"><strong><em>웹 반응형 요소</em></strong></h4>
+<hr>
+<ul>
+<li>
+<p>JS를 이용해 viewport 크기에 따라 UI를 변경하는 로직 구현</p>
+</li>
+<li>
+<p>같은 컴포넌트에 대해 사이즈별로 다른 CSS(SelectedLanges xl, SelectedLanges l,SelectedLanges md 등)를 제공하고 반응형 컴포넌트를 제작하는 요구조건 추가</p>
+</li>
+<li>
+<p>CSS의 media 태그를 활용하지않고 순수 JS만으로 반응형 요소 제작하는 요건을 통해 JS 이벤트 활용능력과 DOM API 조작능력 능력을 평가할 수 있음.</p>
+</li>
+</ul>
+</br>
+<h4 id="%EB%8B%A4%EC%A4%91%EA%B2%80%EC%83%89%EC%96%B4-%EC%9E%85%EB%A0%A5"><strong><em>다중검색어 입력</em></strong></h4>
+<hr>
+<ul>
+<li>
+<p>여러 검색어를 한번에 검색하는 기능 구현</p>
+</li>
+<li>
+<p>지정된 특수 문자로 여러 검색어를 연결해 입력하면 이를 파싱하고 비동기 함수
+병렬처리를 통해 각 검색어에 대한 결과를 한번에 렌더링 하는 요구조건 추가</p>
+</li>
+<li>
+<p>이를 통해 좀 더 복잡한 컴포넌트 렌더링 구현능력, 비동기 함수의 병렬처리 능력을 평가할 수 있음.</p>
+</li>
+</ul>
+
+</body>
+</html>
