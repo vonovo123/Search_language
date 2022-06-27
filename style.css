@@ -26,7 +26,7 @@ body {
 }
 .App {
   height: 100%;
-  margin-top: -300px;
+  margin-top: -250px;
   display: flex;
   flex-direction: column;
   position: relative;

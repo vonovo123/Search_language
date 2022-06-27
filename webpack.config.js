@@ -22,18 +22,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.s?css$/,
-        use: [
-          "style-loader",
-          "css-loader",
-          "postcss-loader",
-          {
-            loader: "sass-loader",
-            options: {
-              additionalData: '@import "~/scss/main";',
-            },
-          },
-        ],
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
       },
       {
         test: /\.js$/,
