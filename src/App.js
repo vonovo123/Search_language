@@ -1,7 +1,7 @@
 import SearchInput from "./components/SearchInput.js";
 import Suggestion from "./components/Suggestion.js";
 import SelectedLanguage from "./components/SelectedLanguage.js";
-import { setSessionStorage, getSessionStorage } from "../SessionStorage.js";
+import { setSessionStorage, getSessionStorage } from "./SessionStorage.js";
 import { setLocalStorage, getLocalStorage } from "./LocalStorage.js";
 import fetchData from "./API.js";
 export default class App {
