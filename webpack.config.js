@@ -1,38 +1,64 @@
-// 웹팩에 대한 설정
 const path = require("path");
-// path method
+const Htmlplugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
-  mode: "development",
-  devtool: "eval",
+  //확장자 제외
   resolve: {
     extensions: [".js"],
+    alias: {
+      "~": path.resolve(__dirname, "src"),
+      assets: path.resolve(__dirname, "src/assets"),
+    },
   },
-  entry: {
-    app: path.join(__dirname, "src/main.js"),
+  //파일 진입점(상대경로)
+  entry: "./src/main.js",
+
+  //결과물을 반환하는 설정
+  output: {
+    // path:path.resolve(__dirname, 'dist'),
+    // filename:'main.js',
+    clean: true,
   },
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ["style-loader", "css-loader"],
+        test: /\.s?css$/,
+        use: [
+          "style-loader",
+          "css-loader",
+          "postcss-loader",
+          {
+            loader: "sass-loader",
+            options: {
+              additionalData: '@import "~/scss/main";',
+            },
+          },
+        ],
       },
       {
         test: /\.js$/,
-        exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["@babel/preset-env"],
-            plugins: ["@babel/plugin-proposal-class-properties"],
-          },
-        },
+        use: ["babel-loader"],
+      },
+      {
+        test: /\.(png|jpe?g|gif|webp)$/,
+        use: ["file-loader"],
       },
     ],
   },
-  plugins: [],
-  output: {
-    filename: "[name].js",
-    path: path.join(__dirname, "dist"),
-    publicPath: "/dist",
+  //번들링 후 결과물의 처리방식등 다양한 플러그인 설정
+  plugins: [
+    new Htmlplugin({
+      template: "./index.html",
+    }),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: "static",
+        },
+      ],
+    }),
+  ],
+  devServer: {
+    host: "localhost",
   },
 };
